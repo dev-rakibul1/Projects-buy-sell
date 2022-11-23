@@ -39,3 +39,6 @@ code {
   opacity: 0.6;
   z-index: 0;
 }
+.overview-title {
+  color: #000 !important;
+}

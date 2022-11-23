@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Micro from "../micro/Micro";
+import UseTitle from "./../../hook/useTitle/useTitle";
 import Car from "./../car/Car";
 import Elect from "./../elect/Elect";
+import OverViewCar from "./../overview/OverViewCar";
 import Hero from "./hero/Hero";
 const heroImages = "https://i.ibb.co/0smJFsf/bannar.jpg";
+const overViewBanner = "https://i.ibb.co/W2YQ536/reviews-car.jpg";
 const car1 = "https://i.ibb.co/Hn77h5R/car3.jpg";
 const car2 = "https://i.ibb.co/1vrdhZ6/car4.jpg";
 const car3 = "https://i.ibb.co/mzWnxWp/car2.jpg";
 
 const Home = () => {
+  UseTitle("Home");
   const [someCars, setSomeCars] = useState([]);
   const [micro, setMicro] = useState([]);
   const [elect, setElect] = useState([]);
@@ -126,6 +130,16 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Over view banner */}
+      <section
+        className="px-2 bg-no-repeat bg-center bg-cover my-16"
+        style={{ backgroundImage: `url(${overViewBanner})` }}
+      >
+        <div className="md:w-[90%] mx-auto px-2">
+          <OverViewCar />
         </div>
       </section>
     </div>
