@@ -9,6 +9,7 @@ const car3 = "https://i.ibb.co/mzWnxWp/car2.jpg";
 
 const Home = () => {
   const [someCars, setSomeCars] = useState([]);
+  const [micro, setMicro] = useState([]);
 
   // const { data: car, isLoading } = useQuery({
   //   queryKey: ["car"],
@@ -30,6 +31,13 @@ const Home = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:5000/micro-something")
+      .then((res) => res.json())
+      .then((data) => setMicro(data))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="">
       {/* hero banner */}
@@ -47,7 +55,7 @@ const Home = () => {
         <div className="md:w-[90%] mx-auto px-2">
           <div className="md:flex">
             <div className="md:w-[30%] px-2">
-              <img src={car2} alt="" className="rounded-xl" />
+              <img src={car1} alt="" className="rounded-xl" />
             </div>
             <div className="md:w-[70%] px-2">
               <div className="md:flex justify-between items-center py-7">
@@ -55,7 +63,7 @@ const Home = () => {
                 <button className="font-semibold">See All</button>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {someCars.map((car) => (
+                {micro.map((car) => (
                   <Car key={car._id} car={car} />
                 ))}
               </div>
