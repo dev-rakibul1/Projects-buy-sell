@@ -18,7 +18,7 @@ const Micro = ({ car }) => {
           <img src={images} alt="car" className="max-w-60 " />
         </figure>
         <div className="card-body">
-          <h2 className="card-title text-base font-bold text-secondary">
+          <h2 className="card-title font-normal text-xl text-secondary car-font">
             {title}
           </h2>
           <div>

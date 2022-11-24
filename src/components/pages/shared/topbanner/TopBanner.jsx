@@ -1,6 +1,6 @@
 import React from "react";
 
-const TopBanner = () => {
+const TopBanner = ({ children }) => {
   return (
     <div
       className="hero bg-cover bg-center bg-no-repeat py-32 top-banner"
@@ -10,9 +10,7 @@ const TopBanner = () => {
     >
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-xl">
-          <h1 className="mb-5 text-4xl font-bold hero-title">
-            Most popular microbus
-          </h1>
+          <h1 className="mb-5 text-4xl font-bold hero-title">{children}</h1>
         </div>
       </div>
     </div>

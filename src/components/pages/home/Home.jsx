@@ -78,7 +78,7 @@ const Home = () => {
                 </span>
                 <Link to={`/allMicro/:id`}>
                   {" "}
-                  <button className="font-semibold">See All micro</button>
+                  <button className="font-semibold">See All</button>
                 </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -103,7 +103,10 @@ const Home = () => {
                 <span className="text-2xl font-normal">
                   Most popular electronics car
                 </span>
-                <button className="font-semibold">See All</button>
+                <Link to={`/allElect/:id`}>
+                  {" "}
+                  <button className="font-semibold">See All</button>
+                </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {elect.map((car) => (
@@ -125,7 +128,10 @@ const Home = () => {
             <div className="md:w-[70%] px-2">
               <div className="md:flex justify-between items-center py-7">
                 <span className="text-2xl font-normal">Most popular car</span>
-                <button className="font-semibold">See All</button>
+                <Link to={`/allCar/:id`}>
+                  {" "}
+                  <button className="font-semibold">See All</button>
+                </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {someCars.map((car) => (
