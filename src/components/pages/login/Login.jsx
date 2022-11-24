@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./../../context/ContextProvider";
 import TopBanner from "./../shared/topbanner/TopBanner";
 
 const Login = () => {
+  const { user, signInWithEmailPassword, googlePopupSign } =
+    useContext(AuthContext);
+
+  // react hook form handler
   const {
     register,
     formState: { errors },
@@ -11,8 +17,45 @@ const Login = () => {
   } = useForm();
   const [data, setData] = useState("");
 
+  // user login information
   const handleBookingForm = (data) => {
     console.log(data);
+    handleUserEmailPassLogin(data);
+    handleGooglePopupLoginSystem(data);
+  };
+
+  // user login with email and password
+  const handleUserEmailPassLogin = (userInfo) => {
+    // user email password
+    const email = userInfo.email;
+    const password = userInfo.password;
+
+    signInWithEmailPassword(email, password)
+      .then((data) => {
+        console.log(data);
+        toast.success("Login successfully");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
+
+  // handle google popup login
+  const handleGooglePopupLoginSystem = (userInfo) => {
+    // user info
+    const email = userInfo.email;
+    const password = userInfo.password;
+
+    googlePopupSign(email, password)
+      .then((data) => {
+        console.log(data);
+        toast.success("Login successfully");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -71,7 +114,10 @@ const Login = () => {
           <div className="flex flex-col w-full">
             <div className="divider py-4">OR</div>
           </div>
-          <button className="btn btn-outline btn-secondary w-full">
+          <button
+            className="btn btn-outline btn-secondary w-full"
+            onClick={handleGooglePopupLoginSystem}
+          >
             Login with google
           </button>
         </div>

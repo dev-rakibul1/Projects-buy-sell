@@ -8,8 +8,12 @@ import TopBanner from "./../shared/topbanner/TopBanner";
 
 const Register = () => {
   UseTitle("Register");
-  const { user, userEmailAndPasswordRegister, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    user,
+    userEmailAndPasswordRegister,
+    updateUserProfile,
+    googlePopupSign,
+  } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const {
@@ -88,6 +92,18 @@ const Register = () => {
       });
 
     toast(error);
+  };
+
+  // handle google popup sign
+  const handleGooglePopupLogin = () => {
+    googlePopupSign()
+      .then((data) => {
+        toast.success("Register successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -174,7 +190,10 @@ const Register = () => {
           <div className="flex flex-col w-full">
             <div className="divider py-4">OR</div>
           </div>
-          <button className="btn btn-outline btn-secondary w-full">
+          <button
+            className="btn btn-outline btn-secondary w-full"
+            onClick={handleGooglePopupLogin}
+          >
             Login with google
           </button>
         </div>
