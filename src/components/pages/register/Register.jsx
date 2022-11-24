@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./../../context/ContextProvider";
 import UseTitle from "./../../hook/useTitle/useTitle";
@@ -7,7 +8,9 @@ import TopBanner from "./../shared/topbanner/TopBanner";
 
 const Register = () => {
   UseTitle("Register");
-  const { user, userEmailAndPasswordRegister } = useContext(AuthContext);
+  const { user, userEmailAndPasswordRegister, updateUserProfile } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -19,18 +22,72 @@ const Register = () => {
   // user info collection from form
   const handleBookingForm = (data) => {
     console.log(data);
-
-    handleUserEmailPassRegister(data.email, data.password);
+    handleUserEmailPassRegister(data);
   };
 
   // user register system
-  const handleUserEmailPassRegister = (email, password) => {
+  const handleUserEmailPassRegister = (data) => {
+    // user info
+    const email = data.email;
+    const password = data.password;
+
+    // user resister email password
     userEmailAndPasswordRegister(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+
+        // user images
+        const imagesHostKey = process.env.REACT_APP_IMAGES_HOST_KEY;
+        const url = `https://api.imgbb.com/1/upload?key=${imagesHostKey}`;
+
+        const imagesFormData = new FormData();
+        const images = data.image[0];
+        imagesFormData.append("image", images);
+
+        fetch(url, {
+          method: "POST",
+          body: imagesFormData,
+        })
+          .then((res) => res.json())
+          .then((imgData) => {
+            if (imgData?.success) {
+              const serverImages = imgData?.data?.url;
+              console.log("user verify check", data?.emailVerified);
+
+              // user info for server
+              const userInfoForServer = {
+                name: data?.name,
+                email: data?.email,
+                image: serverImages,
+              };
+            }
+
+            // update user profile
+            const registerUserInfo = {
+              displayName: data.name,
+              photoURL: imgData?.data?.url && imgData?.data?.url,
+            };
+            updateUserProfile(registerUserInfo)
+              .then(() => {})
+              .catch((error) => console.log(error));
+            setError("");
+          })
+          .catch((error) => {
+            setError(error.message);
+            console.log(error);
+          });
+
+        // user toaster alert
+        toast.success("Register successfully");
+        setError("");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+
+    toast(error);
   };
 
   return (
