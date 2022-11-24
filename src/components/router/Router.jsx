@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRouter from "../context/PrivateRouter";
 import Register from "../pages/register/Register";
 import Root from "./../layout/Root";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
@@ -60,12 +61,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/bookingForm/:id",
-        element: <BookingForm />,
-        loader: async () => fetch("http://localhost:5000/all-micro"),
+        element: (
+          <PrivateRouter>
+            <BookingForm />
+          </PrivateRouter>
+        ),
+        // loader: async () => fetch("http://localhost:5000/all-micro"),
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
       },
     ],
   },

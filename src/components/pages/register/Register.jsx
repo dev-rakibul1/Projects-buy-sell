@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/ContextProvider";
 import UseTitle from "./../../hook/useTitle/useTitle";
 import TopBanner from "./../shared/topbanner/TopBanner";
@@ -15,6 +15,11 @@ const Register = () => {
     googlePopupSign,
   } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  // user navigate
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -83,6 +88,7 @@ const Register = () => {
           });
 
         // user toaster alert
+        navigate(from, { replace: true });
         toast.success("Register successfully");
         setError("");
       })
@@ -99,6 +105,7 @@ const Register = () => {
     googlePopupSign()
       .then((data) => {
         toast.success("Register successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

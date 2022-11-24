@@ -1,13 +1,18 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/ContextProvider";
 import TopBanner from "./../shared/topbanner/TopBanner";
 
 const Login = () => {
   const { user, signInWithEmailPassword, googlePopupSign } =
     useContext(AuthContext);
+
+  // user navigate
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   // react hook form handler
   const {
@@ -34,6 +39,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         toast.success("Login successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -51,6 +57,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         toast.success("Login successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
