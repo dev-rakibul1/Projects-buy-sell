@@ -1,13 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
+import Register from "../pages/register/Register";
 import Root from "./../layout/Root";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
 import BookingForm from "./../pages/bookingForm/BookingForm";
 import AllCar from "./../pages/car/allcar/AllCar";
 import CarSingleDetails from "./../pages/car/carSingleDetails/CarSingleDetails";
 import Catagories from "./../pages/catagories/Catagories";
+import Dashboard from "./../pages/dashboard/Dashboard";
 import AllElect from "./../pages/elect/allelect/AllElect";
 import ElectSingleDetails from "./../pages/elect/electsingleDetails/ElectSingleDetails";
 import Home from "./../pages/home/Home";
+import Login from "./../pages/login/Login";
 import AllMicro from "./../pages/micro/allmicro/AllMicro";
 import SeeDetails from "./../pages/micro/seeDetails/SeeDetails";
 
@@ -19,6 +22,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/catagories", element: <Catagories /> },
       { path: "/advertise", element: <AdvertisedItem /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
       {
         path: "/allMicro/:id",
         element: <AllMicro />,
@@ -57,6 +62,10 @@ const router = createBrowserRouter([
         path: "/bookingForm/:id",
         element: <BookingForm />,
         loader: async () => fetch("http://localhost:5000/all-micro"),
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
