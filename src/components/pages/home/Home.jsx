@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Micro from "../micro/Micro";
 import UseTitle from "./../../hook/useTitle/useTitle";
 import Car from "./../car/Car";
@@ -63,23 +64,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/* car */}
+      {/* micro */}
       <section className="px-2 mt-16">
         <div className="md:w-[90%] mx-auto px-2">
           <div className="md:flex">
             <div className="md:w-[30%] px-2">
-              <img src={car1} alt="" className="rounded-xl" />
+              <img src={car2} alt="" className="rounded-xl" />
             </div>
             <div className="md:w-[70%] px-2">
               <div className="md:flex justify-between items-center py-7">
                 <span className="text-2xl font-normal">
-                  Most popular microbus car
+                  Most popular microbus{" "}
                 </span>
-                <button className="font-semibold">See All</button>
+                <Link to={`/allMicro/:id`}>
+                  {" "}
+                  <button className="font-semibold">See All micro</button>
+                </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {micro.map((car) => (
-                  <Car key={car._id} car={car} />
+                  <Micro key={car._id} car={car} />
                 ))}
               </div>
             </div>
@@ -111,12 +115,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* micro */}
+      {/* car */}
       <section className="px-2 mt-16">
         <div className="md:w-[90%] mx-auto px-2">
           <div className="md:flex">
             <div className="md:w-[30%] px-2">
-              <img src={car2} alt="" className="rounded-xl" />
+              <img src={car1} alt="" className="rounded-xl" />
             </div>
             <div className="md:w-[70%] px-2">
               <div className="md:flex justify-between items-center py-7">
@@ -125,7 +129,7 @@ const Home = () => {
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {someCars.map((car) => (
-                  <Micro key={car._id} car={car} />
+                  <Car key={car._id} car={car} />
                 ))}
               </div>
             </div>
