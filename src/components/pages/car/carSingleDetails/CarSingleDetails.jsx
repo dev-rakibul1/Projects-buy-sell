@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const CarSingleDetails = () => {
   const singleData = useLoaderData();
@@ -52,7 +52,9 @@ const CarSingleDetails = () => {
           </div>
           <p>{singleData.description}</p>
           <div className="card-actions justify-center">
-            <div className="btn btn-secondary">Book now</div>
+            <Link to={`/bookingForm/:id`}>
+              <div className="btn btn-secondary">Book now</div>
+            </Link>
           </div>
         </div>
       </div>

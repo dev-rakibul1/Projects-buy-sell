@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./../layout/Root";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
+import BookingForm from "./../pages/bookingForm/BookingForm";
 import AllCar from "./../pages/car/allcar/AllCar";
 import CarSingleDetails from "./../pages/car/carSingleDetails/CarSingleDetails";
 import Catagories from "./../pages/catagories/Catagories";
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
         element: <CarSingleDetails />,
         loader: async ({ params }) =>
           fetch(`http://localhost:5000/all-car/${params.id}`),
+      },
+      {
+        path: "/bookingForm/:id",
+        element: <BookingForm />,
+        loader: async () => fetch("http://localhost:5000/all-micro"),
       },
     ],
   },
