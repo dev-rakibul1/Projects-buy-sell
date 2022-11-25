@@ -35,6 +35,12 @@ const DashboardLayout = () => {
                 <Link to="/dashboard/orderReviews">Order reviews</Link>
               </li>
             ) : undefined}
+
+            {userInfo.role === "admin" ? (
+              <li>
+                <Link to="/dashboard/users">Users</Link>
+              </li>
+            ) : undefined}
           </ul>
         </div>
       </div>

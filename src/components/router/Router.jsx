@@ -13,6 +13,7 @@ import Catagories from "./../pages/catagories/Catagories";
 import Dashboard from "./../pages/dashboard/Dashboard";
 import MyOrders from "./../pages/dashboard/myOrders/MyOrders";
 import OrderReviews from "./../pages/dashboard/orderReviews/OrderReviews";
+import Users from "./../pages/dashboard/user/Users";
 import AllElect from "./../pages/elect/allelect/AllElect";
 import ElectSingleDetails from "./../pages/elect/electsingleDetails/ElectSingleDetails";
 import Home from "./../pages/home/Home";
@@ -127,6 +128,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <OrderReviews />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/users",
+        element: (
+          <PrivateRouter>
+            <Users />
           </PrivateRouter>
         ),
       },
