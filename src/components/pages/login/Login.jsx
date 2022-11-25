@@ -26,7 +26,6 @@ const Login = () => {
   const handleBookingForm = (data) => {
     console.log(data);
     handleUserEmailPassLogin(data);
-    handleGooglePopupLoginSystem(data);
   };
 
   // user login with email and password
@@ -48,12 +47,8 @@ const Login = () => {
   };
 
   // handle google popup login
-  const handleGooglePopupLoginSystem = (userInfo) => {
-    // user info
-    const email = userInfo.email;
-    const password = userInfo.password;
-
-    googlePopupSign(email, password)
+  const handleGooglePopupLoginSystem = () => {
+    googlePopupSign()
       .then((data) => {
         console.log(data);
         toast.success("Login successfully");

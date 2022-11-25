@@ -15,6 +15,16 @@ const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [userInfo, setUserInformation] = useState([]);
+
+  useEffect(() => {
+    const url = `http://localhost:5000/users/${user?.email}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => console.log("User information", setUserInformation(data)))
+      .catch((error) => console.log(error));
+  }, [user?.email]);
+
   //Register with user email and password
   const userEmailAndPasswordRegister = (email, password) => {
     setLoading(true);
@@ -60,6 +70,7 @@ const ContextProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    userInfo,
     userEmailAndPasswordRegister,
     userLogOut,
     updateUserProfile,

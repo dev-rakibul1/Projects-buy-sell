@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRouter from "../context/PrivateRouter";
 import Register from "../pages/register/Register";
 import Error from "../pages/shared/error/Error";
+import DashboardLayout from "./../layout/DashboardLayout";
 import Root from "./../layout/Root";
 import AddProducts from "./../pages/addProducts/AddProducts";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
@@ -24,8 +25,22 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/catagories", element: <Catagories /> },
-      { path: "/advertise", element: <AdvertisedItem /> },
+      {
+        path: "/catagories",
+        element: (
+          <PrivateRouter>
+            <Catagories />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/advertise",
+        element: (
+          <PrivateRouter>
+            <AdvertisedItem />
+          </PrivateRouter>
+        ),
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
@@ -64,7 +79,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addProducts",
-        element: <AddProducts />,
+        element: (
+          <PrivateRouter>
+            <AddProducts />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/bookingForm/:id",
@@ -75,6 +94,14 @@ const router = createBrowserRouter([
         ),
         loader: async () => fetch("http://localhost:5000/all-micro"),
       },
+    ],
+  },
+
+  // dashboard layout
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
         path: "/dashboard",
         element: (
