@@ -1,9 +1,10 @@
 import React from "react";
+import Navbar from "./../pages/shared/menu/Navbar";
 
 const DashboardLayout = () => {
   return (
     <div>
-      <h1>Dashboard layout</h1>
+      <Navbar />
     </div>
   );
 };

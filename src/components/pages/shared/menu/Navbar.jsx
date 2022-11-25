@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/ContextProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
   const navItems = (
     <>
       <li>
@@ -14,11 +17,18 @@ const Navbar = () => {
         <Link to="/advertise">Advertised</Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/addProducts">Add Product</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+      {user?.email && user?.uid ? (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      ) : undefined}
+      {user?.email && user?.uid ? undefined : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
 

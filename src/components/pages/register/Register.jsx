@@ -69,7 +69,20 @@ const Register = () => {
                 name: data?.name,
                 email: data?.email,
                 image: serverImages,
+                role: data?.role,
               };
+
+              // user for post method
+              fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(userInfoForServer),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+                .then((error) => console.log(error));
             }
 
             // update user profile
@@ -95,6 +108,7 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
         setError(error.message);
+        // toast.error(error.message);
       });
 
     toast(error);
@@ -106,6 +120,27 @@ const Register = () => {
       .then((data) => {
         toast.success("Register successfully");
         navigate(from, { replace: true });
+
+        const userInfoForServer = {
+          name: user?.name && user?.name,
+          email: user?.email && user?.email,
+          image: user?.photoURL && user?.photoURL,
+          role: "buyer",
+        };
+
+        console.log(userInfoForServer);
+
+        // user for post method
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfoForServer),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .then((error) => console.log(error));
       })
       .catch((error) => {
         console.log(error);
@@ -162,7 +197,25 @@ const Register = () => {
             )}
           </div>
 
-          {/* images */}
+          {/* optional */}
+          <div className="my-4">
+            <select
+              {...register("role", { required: true })}
+              className="select select-secondary w-full"
+            >
+              <option>Select your status</option>
+              <option value="seller">as a seller</option>
+              <option value="buyer">as a buyer</option>
+            </select>
+
+            {errors.role?.type === "required" && (
+              <small role="alert" className="text-red-600">
+                Option is required
+              </small>
+            )}
+          </div>
+
+          {/* password */}
           <div className="my-4">
             <input
               {...register("password", { required: true })}

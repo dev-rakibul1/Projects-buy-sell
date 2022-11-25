@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
 import TopBanner from "../shared/topbanner/TopBanner";
+import { AuthContext } from "./../../context/ContextProvider";
 
 const BookingForm = () => {
+  const { user } = useContext(AuthContext);
+  const productData = useLoaderData();
+  console.log(productData);
+
   const {
     register,
     formState: { errors },
@@ -27,6 +33,7 @@ const BookingForm = () => {
               placeholder="Your name"
               type="text"
               className="input input-bordered input-secondary w-full"
+              defaultValue={user?.displayName}
             />
             {errors.name?.type === "required" && (
               <small role="alert" className="text-red-600">
@@ -41,6 +48,7 @@ const BookingForm = () => {
               placeholder="Your email"
               type="email"
               className="input input-bordered input-secondary w-full"
+              defaultValue={user?.email}
             />
             {errors.email?.type === "required" && (
               <small role="alert" className="text-red-600">
@@ -69,6 +77,7 @@ const BookingForm = () => {
               placeholder="Product price"
               type="text"
               className="input input-bordered input-secondary w-full"
+              // defaultValue={resalePrice}
             />
             {errors.price?.type === "required" && (
               <small role="alert" className="text-red-600">

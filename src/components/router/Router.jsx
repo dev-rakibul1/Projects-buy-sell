@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRouter from "../context/PrivateRouter";
 import Register from "../pages/register/Register";
+import Error from "../pages/shared/error/Error";
 import Root from "./../layout/Root";
+import AddProducts from "./../pages/addProducts/AddProducts";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
 import BookingForm from "./../pages/bookingForm/BookingForm";
 import AllCar from "./../pages/car/allcar/AllCar";
@@ -19,6 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/catagories", element: <Catagories /> },
@@ -60,13 +63,17 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/all-car/${params.id}`),
       },
       {
+        path: "/addProducts",
+        element: <AddProducts />,
+      },
+      {
         path: "/bookingForm/:id",
         element: (
           <PrivateRouter>
             <BookingForm />
           </PrivateRouter>
         ),
-        // loader: async () => fetch("http://localhost:5000/all-micro"),
+        loader: async () => fetch("http://localhost:5000/all-micro"),
       },
       {
         path: "/dashboard",

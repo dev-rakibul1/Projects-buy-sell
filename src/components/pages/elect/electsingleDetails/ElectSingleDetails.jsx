@@ -17,10 +17,17 @@ const ElectSingleDetails = () => {
           </h2>
           <div className="text-center">
             <p className="text-green-700">
-              Seller name {singleData.sellerName}
+              Seller name :{" "}
+              {singleData.sellerName ? singleData.sellerName : "Not found"}
             </p>
-            <p className="text-green-700">Release date {singleData.postDate}</p>
-            <p className="text-green-700">Location {singleData.location}</p>
+            <p className="text-green-700">
+              Release date :{" "}
+              {singleData.postDate ? singleData.postDate : "Not found"}
+            </p>
+            <p className="text-green-700">
+              Location :{" "}
+              {singleData.location ? singleData.location : "Not found"}
+            </p>
           </div>
           <div className="md:flex justify-between">
             <div>

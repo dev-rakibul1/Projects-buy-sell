@@ -57,7 +57,7 @@ const AllCar = () => {
                 <p>
                   <strong>Location</strong> {car.location}
                 </p>
-                <p>{car.description.substring(0, 150)}...</p>
+                <p>{car?.description?.slice(0, 150)}...</p>
                 <div className="card-actions justify-end w-full mt-7">
                   <Link className="w-full" to={`/detailsSingleCar/${car._id}`}>
                     <button className="btn btn-secondary w-full">
