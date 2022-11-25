@@ -11,6 +11,9 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
+        <Link to="/shop">Shop</Link>
+      </li>
+      <li>
         {userInfo?.role === "seller" || userInfo?.role === "admin" ? (
           <Link to="/catagories">Catagories</Link>
         ) : undefined}

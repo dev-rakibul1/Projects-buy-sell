@@ -35,11 +35,15 @@ const Dashboard = () => {
         </h2>
         <h3>Name: {user?.displayName}</h3>
         <h3>Email: {user?.email}</h3>
+
+        {/* admin role */}
         {userInfo.role === "seller" ? (
           <h3>Administrator: Seller</h3>
         ) : undefined}
         {userInfo.role === "admin" ? <h3>Administrator: Admin</h3> : undefined}
-        {!userInfo.role ? <h3>Administrator: Buyer</h3> : undefined}
+        {!userInfo.role || userInfo.role === "buyer" ? (
+          <h3>Administrator: Buyer</h3>
+        ) : undefined}
       </div>
 
       <button

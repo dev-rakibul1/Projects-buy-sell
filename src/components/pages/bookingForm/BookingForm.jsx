@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import TopBanner from "../shared/topbanner/TopBanner";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const BookingForm = () => {
   const { user } = useContext(AuthContext);
   const productData = useLoaderData();
-  console.log(productData);
+  // console.log(productData);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -18,6 +20,34 @@ const BookingForm = () => {
 
   const handleBookingForm = (data) => {
     console.log(data);
+
+    const userBookingInfo = {
+      name: data?.name,
+      email: data?.email,
+      productName: data?.productName,
+      price: data?.price,
+      phone: data?.phone,
+      address: data?.address,
+    };
+
+    fetch("http://localhost:5000/user-booking-information", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userBookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast.success(data.message);
+          return navigate("/dashboard/myOrders");
+        } else {
+          toast.error(data.error);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

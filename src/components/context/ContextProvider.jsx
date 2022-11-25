@@ -16,14 +16,23 @@ const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const [userInfo, setUserInformation] = useState([]);
+  const [allMicro, setALlMicro] = useState({});
 
   useEffect(() => {
     const url = `http://localhost:5000/users/${user?.email}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => console.log("User information", setUserInformation(data)))
+      .then((data) => console.log(setUserInformation(data)))
       .catch((error) => console.log(error));
   }, [user?.email]);
+
+  // useEffect(() => {
+  //   const url = `http://localhost:5000/all-micro`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setALlMicro(data))
+  //     .catch((error) => console.log(error));
+  // }, [user?.email]);
 
   //Register with user email and password
   const userEmailAndPasswordRegister = (email, password) => {
@@ -71,6 +80,7 @@ const ContextProvider = ({ children }) => {
     user,
     loading,
     userInfo,
+    allMicro,
     userEmailAndPasswordRegister,
     userLogOut,
     updateUserProfile,

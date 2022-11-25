@@ -11,12 +11,15 @@ import AllCar from "./../pages/car/allcar/AllCar";
 import CarSingleDetails from "./../pages/car/carSingleDetails/CarSingleDetails";
 import Catagories from "./../pages/catagories/Catagories";
 import Dashboard from "./../pages/dashboard/Dashboard";
+import MyOrders from "./../pages/dashboard/myOrders/MyOrders";
+import OrderReviews from "./../pages/dashboard/orderReviews/OrderReviews";
 import AllElect from "./../pages/elect/allelect/AllElect";
 import ElectSingleDetails from "./../pages/elect/electsingleDetails/ElectSingleDetails";
 import Home from "./../pages/home/Home";
 import Login from "./../pages/login/Login";
 import AllMicro from "./../pages/micro/allmicro/AllMicro";
 import SeeDetails from "./../pages/micro/seeDetails/SeeDetails";
+import Shop from "./../pages/shop/Shop";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,7 @@ const router = createBrowserRouter([
       },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/shop", element: <Shop /> },
       {
         path: "/allMicro/:id",
         element: <AllMicro />,
@@ -107,6 +111,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Dashboard />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/myOrders",
+        element: (
+          <PrivateRouter>
+            <MyOrders />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/orderReviews",
+        element: (
+          <PrivateRouter>
+            <OrderReviews />
           </PrivateRouter>
         ),
       },

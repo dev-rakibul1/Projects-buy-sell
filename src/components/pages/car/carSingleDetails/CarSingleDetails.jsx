@@ -4,6 +4,16 @@ import { Link, useLoaderData } from "react-router-dom";
 const CarSingleDetails = () => {
   const singleData = useLoaderData();
   console.log(singleData);
+
+  // const handleCarSingleData = (data) => {
+  //   console.log(data._id);
+
+  //   fetch(`http://localhost:5000/all-car/${data._id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.log(error));
+  // };
+
   return (
     <div className="md:w-[90%] mx-auto px-2 my-16">
       <div className="card w-full">
@@ -59,7 +69,7 @@ const CarSingleDetails = () => {
           </div>
           <p>{singleData.description}</p>
           <div className="card-actions justify-center">
-            <Link to={`/bookingForm/:id`}>
+            <Link to={`/bookingForm/${singleData._id}`}>
               <div className="btn btn-secondary">Book now</div>
             </Link>
           </div>

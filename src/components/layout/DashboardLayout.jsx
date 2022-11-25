@@ -1,8 +1,11 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "./../context/ContextProvider";
 import Navbar from "./../pages/shared/menu/Navbar";
 
 const DashboardLayout = () => {
+  const { userInfo } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar />
@@ -21,12 +24,17 @@ const DashboardLayout = () => {
           <label htmlFor="dashboard-layout" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
+            {userInfo.role === "seller" ||
+            userInfo.role === "admin" ? undefined : (
+              <li>
+                <Link to="/dashboard/myOrders">My orders</Link>
+              </li>
+            )}
+            {userInfo.role === "seller" ? (
+              <li>
+                <Link to="/dashboard/orderReviews">Order reviews</Link>
+              </li>
+            ) : undefined}
           </ul>
         </div>
       </div>

@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "./../../../context/ContextProvider";
 
-const SeeDetails = () => {
+const SeeDetails = ({ handleMicroSingleData }) => {
   const singleData = useLoaderData();
-  console.log(singleData);
+  const { allMicro } = useContext(AuthContext);
+  console.log("all micor data", allMicro);
+
+  // const handleMicroSingleData = (user) => {
+  //   console.log(user);
+  // };
+
   return (
     <div className="md:w-[90%] mx-auto px-2 my-16">
       <div className="card w-full">
@@ -59,7 +66,7 @@ const SeeDetails = () => {
           </div>
           <p>{singleData.description}</p>
           <div className="card-actions justify-center">
-            <Link to={`/bookingForm/:id`}>
+            <Link to={`/bookingForm/${singleData._id}`}>
               <div className="btn btn-secondary">Book now</div>
             </Link>
           </div>

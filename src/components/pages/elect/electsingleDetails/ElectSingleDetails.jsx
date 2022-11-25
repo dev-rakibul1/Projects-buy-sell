@@ -59,7 +59,7 @@ const ElectSingleDetails = () => {
           </div>
           <p>{singleData.description}</p>
           <div className="card-actions justify-center">
-            <Link to={`/bookingForm/:id`}>
+            <Link to={`/bookingForm/${singleData._id}`}>
               <div className="btn btn-secondary">Book now</div>
             </Link>
           </div>
