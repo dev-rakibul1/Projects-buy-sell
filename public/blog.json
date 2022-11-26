@@ -1,0 +1,18 @@
+[
+  {
+    "title": " What are the different ways to manage a state in a React application?",
+    "description": "There are four main types of state you need to properly manage in your React applications. 1) Local state. 2) Global state. 3) Server state.4) URL state._________Local state is most often managed in React using the useState hook.__________Global state is necessary when we want to get and update data anywhere in our app, or in multiple components at least. _________Server state  Data that comes from an external server that must be integrated with our UI state. _________URL state  Data that exists on our URLs, including the pathname and query parameters. URLstate is often missing as a category of state, but it is an important one.In many cases, a lot of major parts of our application rely upon accessing URL state. Try to imagine building a blog without being able to fetch a post based off of its slug or id that is located in the URL!"
+  },
+  {
+    "title": "How does prototypical inheritance work?",
+    "description": "When it comes to inheritance, JavaScript only has one construct: objects. Each object has a private property which holds a link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype."
+  },
+  {
+    "title": "What is a unit test? Why should we write unit tests?",
+    "description": "Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.  The main objective of unit testing is to isolate written code to test and determine if it works as intended.______Unit testing ensures that all code meets quality standards before it’s deployed. This ensures a reliable engineering environment where quality is paramount. Over the course of the product development life cycle, unit testing saves time and money, and helps developers write better code, more efficiently."
+  },
+  {
+    "title": "React vs. Angular vs. Vue?",
+    "description": "****Angular**** has a steep learning curve, considering it is a complete solution, and mastering Angular requires you to learn associated concepts like TypeScript and MVC. Even though it takes time to learn Angular, the investment pays dividends in terms of understanding how the front end works. ****React**** offers a Getting Started guide that should help one set up React in about an hour. The documentation is thorough and complete, with solutions to common issues already present on Stack Overflow. React is not a complete framework and advanced features require the use of third-party libraries. This makes the learning curve of the core framework not so steep but depends on the path you take with additional functionality. However, learning to use React does not necessarily mean that you are using the best practices. ****Vue**** provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option. However, simplicity and flexibility of Vue is a double-edged sword — it allows poor code, making it difficult to debug and test."
+  }
+]

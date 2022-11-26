@@ -10,13 +10,11 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/shop">Shop</Link>
-      </li>
+      </li> */}
       <li>
-        {userInfo?.role === "seller" || userInfo?.role === "admin" ? (
-          <Link to="/catagories">Catagories</Link>
-        ) : undefined}
+        <Link to="/catagories">Catagories</Link>
       </li>
       <li>
         {userInfo?.role === "seller" || userInfo?.role === "admin" ? (
@@ -35,6 +33,10 @@ const Navbar = () => {
           <Link to="/dashboard">Dashboard</Link>
         </li>
       ) : undefined}
+
+      <li>
+        <Link to="/blog">Blog</Link>
+      </li>
       {user?.email && user?.uid ? undefined : (
         <li>
           <Link to="/login">Login</Link>

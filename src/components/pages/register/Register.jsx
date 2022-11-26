@@ -204,8 +204,8 @@ const Register = () => {
               className="select select-secondary w-full"
             >
               <option>Select your status</option>
-              <option value="seller">as a seller</option>
-              <option value="buyer">as a buyer</option>
+              <option value="seller">Sell my products</option>
+              <option value="buyer">Buy products</option>
             </select>
 
             {errors.role?.type === "required" && (

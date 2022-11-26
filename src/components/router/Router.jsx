@@ -6,6 +6,7 @@ import DashboardLayout from "./../layout/DashboardLayout";
 import Root from "./../layout/Root";
 import AddProducts from "./../pages/addProducts/AddProducts";
 import AdvertisedItem from "./../pages/advertised/AdvertisedItem";
+import Blog from "./../pages/blog/Blog";
 import BookingForm from "./../pages/bookingForm/BookingForm";
 import AllCar from "./../pages/car/allcar/AllCar";
 import CarSingleDetails from "./../pages/car/carSingleDetails/CarSingleDetails";
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/shop", element: <Shop /> },
+      { path: "/blog", element: <Blog /> },
       {
         path: "/allMicro/:id",
         element: <AllMicro />,
