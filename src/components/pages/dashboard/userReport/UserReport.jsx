@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
-import Spinner from "./../../../typography/spinner/Spinner";
+import Spinner from "../../../typography/spinner/Spinner";
 
-const OrderReviews = () => {
+const UserReport = () => {
   const {
-    data: orderReviews,
+    data: myOrders,
     isLoading,
     refetch,
   } = useQuery({
     queryKey: ["myOrder"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user-booking-information");
+      const res = await fetch("http://localhost:5000/user-report");
       const data = await res.json();
       return data;
     },
@@ -22,10 +22,8 @@ const OrderReviews = () => {
     return <Spinner />;
   }
 
-  const handleOrderReviews = (info) => {
-    console.log(info);
-
-    fetch(`http://localhost:5000/user-booking-information/${info._id}`, {
+  const handleUserProductRemove = (order) => {
+    fetch(`http://localhost:5000/user-report/${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -42,10 +40,10 @@ const OrderReviews = () => {
 
   return (
     <div>
-      {orderReviews.length ? (
+      {myOrders?.length ? (
         <>
           <h1 className="text-center my-7 text-2xl font-semibold text-secondary">
-            Order reviews
+            Your order details
           </h1>
 
           <div className="overflow-x-auto">
@@ -54,27 +52,37 @@ const OrderReviews = () => {
               <thead>
                 <tr>
                   <th>Sl</th>
-                  <th>Name</th>
-                  <th>Gmail</th>
-                  <th>Products name</th>
-                  <th>phone</th>
-                  <th>address</th>
+                  <th>Picture</th>
+                  <th>Title</th>
+                  <th>Seller name</th>
+                  <th>Seller status</th>
+                  <th>Location</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
-                {orderReviews.map((order, index) => (
-                  <tr key={order._id}>
+                {myOrders.map((myOrder, index) => (
+                  <tr key={myOrder._id}>
                     <th>{index + 1}</th>
-                    <th>{order?.name}</th>
-                    <th>{order?.email}</th>
-                    <td>{order?.productName}</td>
-                    <td>{order?.phone}</td>
-                    <td>{order?.address}</td>
+                    <th>
+                      <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={myOrder.images} />
+                        </div>
+                      </div>
+                    </th>
+                    <th>{myOrder?.title}</th>
+                    <th>{myOrder?.sellerName}</th>
+                    <th>
+                      {myOrder?.sellerStatus
+                        ? myOrder?.sellerStatus
+                        : "Not verified"}
+                    </th>
+                    <td>{myOrder?.location}</td>
                     <td>
                       <button
                         className="bg-secondary text-white py-3 px-3 rounded-md"
-                        onClick={() => handleOrderReviews(order)}
+                        onClick={() => handleUserProductRemove(myOrder)}
                       >
                         <FaTimes />
                       </button>
@@ -90,11 +98,11 @@ const OrderReviews = () => {
           <p>
             <FaMedapps className="text-9xl my-16" />
           </p>
-          <span>User products not added yet.</span>
+          <span>No report added here.</span>
         </div>
       )}
     </div>
   );
 };
 
-export default OrderReviews;
+export default UserReport;

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRouter from "../context/PrivateRouter";
+import MyProducts from "../pages/dashboard/myProducts/MyProducts";
 import Register from "../pages/register/Register";
 import Error from "../pages/shared/error/Error";
 import DashboardLayout from "./../layout/DashboardLayout";
@@ -15,6 +16,7 @@ import Dashboard from "./../pages/dashboard/Dashboard";
 import MyOrders from "./../pages/dashboard/myOrders/MyOrders";
 import OrderReviews from "./../pages/dashboard/orderReviews/OrderReviews";
 import Users from "./../pages/dashboard/user/Users";
+import UserReport from "./../pages/dashboard/userReport/UserReport";
 import Wishlist from "./../pages/dashboard/wishlist/Wishlist";
 import AllElect from "./../pages/elect/allelect/AllElect";
 import ElectSingleDetails from "./../pages/elect/electsingleDetails/ElectSingleDetails";
@@ -147,6 +149,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Wishlist />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/user-report",
+        element: (
+          <PrivateRouter>
+            <UserReport />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/myProducts",
+        element: (
+          <PrivateRouter>
+            <MyProducts />
           </PrivateRouter>
         ),
       },

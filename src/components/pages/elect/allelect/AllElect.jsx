@@ -44,6 +44,44 @@ const AllElect = () => {
       .catch((error) => console.log(error));
   };
 
+  // handle user report items
+  const handleUserReport = (data) => {
+    console.log(data);
+
+    const carSingleDetails = {
+      title: data?.title,
+      images: data?.images,
+      model: data?.model,
+      originalPrice: data?.originalPrice,
+      resalePrice: data?.resalePrice,
+      postDate: data?.postDate,
+      sellerName: data?.sellerName,
+      sellerStatus: data?.sellerStatus,
+      speed: data?.speed,
+      weight: data?.weight,
+      yearsOfUse: data?.yearsOfUse,
+      location: data?.location,
+      description: data?.description,
+    };
+
+    fetch("http://localhost:5000/user-report", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(carSingleDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.error);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <section>
@@ -73,7 +111,10 @@ const AllElect = () => {
                   >
                     Wishlist <FaRegHeart className="ml-2" />
                   </button>
-                  <button className="m-4 font-bold flex items-center justify-center text-md">
+                  <button
+                    className="m-4 font-bold flex items-center justify-center text-md"
+                    onClick={() => handleUserReport(car)}
+                  >
                     report <FaHandHoldingMedical className="ml-2" />{" "}
                   </button>
                 </div>

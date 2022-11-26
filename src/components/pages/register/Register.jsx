@@ -90,6 +90,7 @@ const Register = () => {
               displayName: data.name,
               photoURL: imgData?.data?.url && imgData?.data?.url,
             };
+            console.log(registerUserInfo);
             updateUserProfile(registerUserInfo)
               .then(() => {})
               .catch((error) => console.log(error));

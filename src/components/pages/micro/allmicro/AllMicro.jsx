@@ -8,6 +8,7 @@ const AllMicro = () => {
   const allmicro = useLoaderData();
   console.log(allmicro);
 
+  // handle user wish list items
   const handleUserWishlist = (data) => {
     console.log(data);
 
@@ -28,6 +29,44 @@ const AllMicro = () => {
     };
 
     fetch("http://localhost:5000/user-wishlist", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(carSingleDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.error);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // handle user report items
+  const handleUserReport = (data) => {
+    console.log(data);
+
+    const carSingleDetails = {
+      title: data?.title,
+      images: data?.images,
+      model: data?.model,
+      originalPrice: data?.originalPrice,
+      resalePrice: data?.resalePrice,
+      postDate: data?.postDate,
+      sellerName: data?.sellerName,
+      sellerStatus: data?.sellerStatus,
+      speed: data?.speed,
+      weight: data?.weight,
+      yearsOfUse: data?.yearsOfUse,
+      location: data?.location,
+      description: data?.description,
+    };
+
+    fetch("http://localhost:5000/user-report", {
       method: "POST",
       headers: {
         "content-type": "application/json",

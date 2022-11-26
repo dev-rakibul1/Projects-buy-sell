@@ -1,3 +1,5 @@
+// import axios from "axios";
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -16,14 +18,18 @@ const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const [userInfo, setUserInformation] = useState([]);
-  const [allMicro, setALlMicro] = useState({});
+  console.log(userInfo);
+
+  // axios
+  //   .get(`http://localhost:5000/users/${user?.email}`)
+  //   .then(function (response) {
+  //     setUserInformation(response.data);
+  //   });
 
   useEffect(() => {
-    const url = `http://localhost:5000/users/${user?.email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => console.log(setUserInformation(data)))
-      .catch((error) => console.log(error));
+    axios.get(`http://localhost:5000/users/${user?.email}`).then((res) => {
+      setUserInformation(res.data);
+    });
   }, [user?.email]);
 
   // useEffect(() => {
@@ -80,7 +86,6 @@ const ContextProvider = ({ children }) => {
     user,
     loading,
     userInfo,
-    allMicro,
     userEmailAndPasswordRegister,
     userLogOut,
     updateUserProfile,

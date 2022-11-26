@@ -90,7 +90,7 @@ const MyOrders = () => {
           <p>
             <FaMedapps className="text-9xl my-16" />
           </p>
-          <span>You no order place yet.</span>
+          <span>You no order place.</span>
         </div>
       )}
     </div>
