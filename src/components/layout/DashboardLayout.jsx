@@ -41,6 +41,10 @@ const DashboardLayout = () => {
                 <Link to="/dashboard/users">Users</Link>
               </li>
             ) : undefined}
+
+            <li>
+              <Link to="/dashboard/wishlist">Wishlist</Link>
+            </li>
           </ul>
         </div>
       </div>

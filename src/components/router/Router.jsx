@@ -15,6 +15,7 @@ import Dashboard from "./../pages/dashboard/Dashboard";
 import MyOrders from "./../pages/dashboard/myOrders/MyOrders";
 import OrderReviews from "./../pages/dashboard/orderReviews/OrderReviews";
 import Users from "./../pages/dashboard/user/Users";
+import Wishlist from "./../pages/dashboard/wishlist/Wishlist";
 import AllElect from "./../pages/elect/allelect/AllElect";
 import ElectSingleDetails from "./../pages/elect/electsingleDetails/ElectSingleDetails";
 import Home from "./../pages/home/Home";
@@ -138,6 +139,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Users />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/wishlist",
+        element: (
+          <PrivateRouter>
+            <Wishlist />
           </PrivateRouter>
         ),
       },

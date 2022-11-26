@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
 const CarSingleDetails = () => {
@@ -26,9 +27,23 @@ const CarSingleDetails = () => {
             <div className="badge badge-secondary">NEW</div>
           </h2>
           <div className="text-center">
-            <p className="text-green-700">
-              Seller name :{" "}
-              {singleData.sellerName ? singleData.sellerName : "Not found"}
+            <p className="text-green-700 flex items-center justify-center">
+              <span>
+                Seller name :{" "}
+                {singleData.sellerName ? singleData.sellerName : "Not found"}{" "}
+              </span>
+              <span
+                className="w-7 h-7 bg-green-700 rounded-full text-center ml-5 flex items-center justify-center text-white"
+                title="Seller verified"
+              >
+                {singleData?.sellerStatus === "verified" ? (
+                  <FaCheck className="text-center" />
+                ) : (
+                  <span title="Seller not verify">
+                    <FaTimes />
+                  </span>
+                )}
+              </span>
             </p>
             <p className="text-green-700">
               Release date :{" "}

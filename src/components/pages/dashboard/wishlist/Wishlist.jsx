@@ -2,28 +2,25 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
-import Spinner from "../../../typography/spinner/Spinner";
 
-const MyOrders = () => {
+const Wishlist = () => {
   const {
-    data: myOrders,
+    data: wishlist,
     isLoading,
+    error,
     refetch,
   } = useQuery({
-    queryKey: ["myOrder"],
+    queryKey: ["wishlist"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user-booking-information");
-      const data = await res.json();
+      const res = await fetch("http://localhost:5000/user-wishlist");
+      const data = res.json();
       return data;
     },
   });
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  const handleUserProductRemove = (order) => {
-    fetch(`http://localhost:5000/user-booking-information/${order._id}`, {
+  // handle my wishlist
+  const handleMyWishlist = (wish) => {
+    fetch(`http://localhost:5000/user-wishlist/${wish._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -40,7 +37,7 @@ const MyOrders = () => {
 
   return (
     <div>
-      {myOrders.length ? (
+      {wishlist?.length ? (
         <>
           <h1 className="text-center my-7 text-2xl font-semibold text-secondary">
             Your order details
@@ -52,20 +49,34 @@ const MyOrders = () => {
               <thead>
                 <tr>
                   <th>Sl</th>
-                  <th>Gmail</th>
+                  <th>Picture</th>
                   <th>Title</th>
-                  <th>Price</th>
+                  <th>Model</th>
+                  <th>Resale price</th>
+                  <th>Seller status</th>
                   <th>Payment</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
-                {myOrders.map((myOrder, index) => (
-                  <tr key={myOrder._id}>
+                {wishlist.map((myWish, index) => (
+                  <tr key={myWish._id}>
                     <th>{index + 1}</th>
-                    <th>{myOrder?.email}</th>
-                    <td>{myOrder?.productName}</td>
-                    <td>{myOrder?.price}</td>
+                    <th>
+                      <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={myWish?.images} alt="product" />
+                        </div>
+                      </div>
+                    </th>
+                    <th>{myWish?.title}</th>
+                    <td>{myWish?.model}</td>
+                    <td>{myWish?.resalePrice}$</td>
+                    <td>
+                      {myWish?.sellerStatus
+                        ? myWish?.sellerStatus
+                        : "Not verified"}
+                    </td>
                     <td>
                       <button className="bg-secondary text-white py-1 px-4 rounded-md">
                         Pay
@@ -74,7 +85,7 @@ const MyOrders = () => {
                     <td>
                       <button
                         className="bg-secondary text-white py-3 px-3 rounded-md"
-                        onClick={() => handleUserProductRemove(myOrder)}
+                        onClick={() => handleMyWishlist(myWish)}
                       >
                         <FaTimes />
                       </button>
@@ -90,11 +101,11 @@ const MyOrders = () => {
           <p>
             <FaMedapps className="text-9xl my-16" />
           </p>
-          <span>You no order place yet.</span>
+          <span>No product add yet on your wishlist.</span>
         </div>
       )}
     </div>
   );
 };
 
-export default MyOrders;
+export default Wishlist;
