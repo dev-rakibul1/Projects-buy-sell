@@ -54,6 +54,7 @@ const OrderReviews = () => {
               <thead>
                 <tr>
                   <th>Sl</th>
+                  <th>picture</th>
                   <th>Name</th>
                   <th>Gmail</th>
                   <th>Products name</th>
@@ -66,11 +67,18 @@ const OrderReviews = () => {
                 {orderReviews.map((order, index) => (
                   <tr key={order._id}>
                     <th>{index + 1}</th>
+                    <th>
+                      <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
+                          <img src={order?.images} alt="order images" />
+                        </div>
+                      </div>
+                    </th>
                     <th>{order?.name}</th>
                     <th>{order?.email}</th>
                     <td>{order?.productName}</td>
                     <td>{order?.phone}</td>
-                    <td>{order?.address}</td>
+                    <td>{order?.location}</td>
                     <td>
                       <button
                         className="bg-secondary text-white py-3 px-3 rounded-md"

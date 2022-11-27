@@ -82,6 +82,10 @@ const AllCar = () => {
       .catch((error) => console.log(error));
   };
 
+  const onHandleModalData = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
       <section>

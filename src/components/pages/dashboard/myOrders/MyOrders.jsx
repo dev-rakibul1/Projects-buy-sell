@@ -52,6 +52,7 @@ const MyOrders = () => {
               <thead>
                 <tr>
                   <th>Sl</th>
+                  <th>Picture</th>
                   <th>Gmail</th>
                   <th>Title</th>
                   <th>Price</th>
@@ -63,6 +64,13 @@ const MyOrders = () => {
                 {myOrders.map((myOrder, index) => (
                   <tr key={myOrder._id}>
                     <th>{index + 1}</th>
+                    <th>
+                      <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
+                          <img src={myOrder?.images} />
+                        </div>
+                      </div>
+                    </th>
                     <th>{myOrder?.email}</th>
                     <td>{myOrder?.productName}</td>
                     <td>{myOrder?.price}</td>
