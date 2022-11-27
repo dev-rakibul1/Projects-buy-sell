@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TopBanner from "../shared/topbanner/TopBanner";
+import UseTitle from "./../../hook/useTitle/useTitle";
 
 const Blog = () => {
+  UseTitle("Blog");
   const [blogs, setBlogs] = useState([]);
   //   const { data: blogs } = useQuery({
   //     queryKey: ["blog"],

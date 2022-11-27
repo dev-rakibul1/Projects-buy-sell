@@ -3,9 +3,11 @@ import { toast } from "react-hot-toast";
 import { FaHandHoldingMedical, FaRegHeart } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import TopBanner from "../../shared/topbanner/TopBanner";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const AllElect = () => {
   const allelect = useLoaderData();
+  UseTitle("electronic car");
 
   const handleUserWishlist = (data) => {
     console.log(data);

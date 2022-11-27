@@ -18,6 +18,9 @@ const AdvertisedItem = () => {
 
     fetch(`http://localhost:5000/advertise/${data._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

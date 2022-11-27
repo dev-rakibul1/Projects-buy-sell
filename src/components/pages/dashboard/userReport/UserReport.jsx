@@ -3,8 +3,10 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
 import Spinner from "../../../typography/spinner/Spinner";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const UserReport = () => {
+  UseTitle("report");
   const {
     data: myOrders,
     isLoading,
@@ -25,6 +27,9 @@ const UserReport = () => {
   const handleUserProductRemove = (order) => {
     fetch(`http://localhost:5000/user-report/${order._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

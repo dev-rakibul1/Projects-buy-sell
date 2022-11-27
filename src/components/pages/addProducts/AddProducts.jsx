@@ -4,8 +4,10 @@ import { toast } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import TopBanner from "../shared/topbanner/TopBanner";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../hook/useTitle/useTitle";
 
 const AddProducts = () => {
+  UseTitle("Products add");
   const { user, userInfo } = useContext(AuthContext);
   const productData = useLoaderData();
   console.log(productData);

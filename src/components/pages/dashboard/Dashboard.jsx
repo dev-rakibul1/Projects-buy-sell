@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { FaPowerOff } from "react-icons/fa";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../hook/useTitle/useTitle";
 
 const Dashboard = () => {
   const { userInfo, user, userLogOut } = useContext(AuthContext);
   // const [userInfo, setUserInformation] = useState([]);
+  UseTitle("dashboard");
 
   const { email, role } = userInfo;
   console.log(email, role);

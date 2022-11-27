@@ -11,14 +11,19 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/Firebase.Config";
+import useToken from "./../hook/useTitle/useToken";
 
 export const AuthContext = createContext();
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [getUser, setGetUser] = useState("");
 
-  const [userInfo, setUserInformation] = useState([]);
+  const [userInfo, setUserInformation] = useState("");
   console.log(userInfo);
+
+  // use token hook
+  const [token] = useToken(userInfo);
 
   // axios
   //   .get(`http://localhost:5000/users/${user?.email}`)
@@ -27,10 +32,16 @@ const ContextProvider = ({ children }) => {
   //   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/users/${user?.email}`).then((res) => {
-      setUserInformation(res.data);
-    });
-  }, [user?.email]);
+    axios
+      .get(`http://localhost:5000/users/${user?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        setUserInformation(res.data);
+      });
+  }, [user]);
 
   // useEffect(() => {
   //   const url = `http://localhost:5000/all-micro`;

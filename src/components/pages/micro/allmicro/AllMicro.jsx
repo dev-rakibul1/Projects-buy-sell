@@ -3,10 +3,13 @@ import { toast } from "react-hot-toast";
 import { FaHandHoldingMedical, FaRegHeart } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import TopBanner from "../../shared/topbanner/TopBanner";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const AllMicro = () => {
   const allmicro = useLoaderData();
   console.log(allmicro);
+
+  UseTitle("microbus");
 
   // handle user wish list items
   const handleUserWishlist = (data) => {

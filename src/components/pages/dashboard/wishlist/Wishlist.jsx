@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const Wishlist = () => {
+  UseTitle("wishlist");
   const {
     data: wishlist,
     isLoading,
@@ -22,6 +24,9 @@ const Wishlist = () => {
   const handleMyWishlist = (wish) => {
     fetch(`http://localhost:5000/user-wishlist/${wish._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

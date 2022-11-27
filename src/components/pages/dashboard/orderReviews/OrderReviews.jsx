@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 import Spinner from "./../../../typography/spinner/Spinner";
 
 const OrderReviews = () => {
+  UseTitle("Order review");
   const {
     data: orderReviews,
     isLoading,
@@ -27,6 +29,9 @@ const OrderReviews = () => {
 
     fetch(`http://localhost:5000/user-booking-information/${info._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

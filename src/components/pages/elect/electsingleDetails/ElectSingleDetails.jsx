@@ -6,8 +6,10 @@ import { AuthContext } from "./../../../context/ContextProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const ElectSingleDetails = () => {
+  UseTitle("electronic car details");
   const singleData = useLoaderData();
   const { userInfo } = useContext(AuthContext);
   console.log(singleData);

@@ -3,8 +3,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaMedapps, FaTimes } from "react-icons/fa";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const MyProducts = () => {
+  UseTitle("My products");
   const [micro, setMicroData] = useState(null);
   const [luxuriousCar, setLuxuriousCar] = useState(null);
 
@@ -52,6 +54,9 @@ const MyProducts = () => {
 
     fetch(`http://localhost:5000/all-elect/${ele._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -71,6 +76,9 @@ const MyProducts = () => {
 
     fetch(`http://localhost:5000/all-micro/${ele._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -92,6 +100,9 @@ const MyProducts = () => {
 
     fetch(`http://localhost:5000/all-car/${ele._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../hook/useTitle/useTitle";
 import TopBanner from "./../shared/topbanner/TopBanner";
 
 const Login = () => {
   const { user, signInWithEmailPassword, googlePopupSign } =
     useContext(AuthContext);
+  UseTitle("login");
 
   // user navigate
   const location = useLocation();

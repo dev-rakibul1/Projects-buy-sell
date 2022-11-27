@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -73,15 +74,25 @@ const Register = () => {
               };
 
               // user for post method
-              fetch("http://localhost:5000/users", {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify(userInfoForServer),
-              })
-                .then((res) => res.json())
-                .then((data) => console.log(data))
+              // fetch("http://localhost:5000/users", {
+              //   method: "POST",
+              //   headers: {
+              //     "content-type": "application/json",
+              //   },
+              //   body: JSON.stringify(userInfoForServer),
+              // })
+
+              axios
+                .post("http://localhost:5000/users", userInfoForServer)
+                .then((res) => {
+                  // console.log(res);
+                  if (res?.data?.success) {
+                    toast.success(res?.data?.message);
+                  } else {
+                    toast.error(res?.data?.error);
+                  }
+                  navigate(from, { replace: from });
+                })
                 .then((error) => console.log(error));
             }
 
@@ -205,8 +216,8 @@ const Register = () => {
               className="select select-secondary w-full"
             >
               <option>Select your status</option>
-              <option value="seller">Sell my products</option>
-              <option value="buyer">Buy products</option>
+              <option value="seller">Seller account</option>
+              <option value="buyer">Buyer account</option>
             </select>
 
             {errors.role?.type === "required" && (

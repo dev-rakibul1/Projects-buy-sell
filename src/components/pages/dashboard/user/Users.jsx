@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaTimes } from "react-icons/fa";
 import { AuthContext } from "./../../../context/ContextProvider";
@@ -9,6 +9,8 @@ import Spinner from "./../../../typography/spinner/Spinner";
 const Users = () => {
   const { userInfo } = useContext(AuthContext);
   UseTitle("user");
+
+  const [getUser, setGetUser] = useState("");
 
   const {
     data: users,
@@ -30,6 +32,9 @@ const Users = () => {
   const handleUser = (user) => {
     fetch(`http://localhost:5000/users/${user._id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -49,9 +54,15 @@ const Users = () => {
 
     fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("users", data?.data);
+        setGetUser(data?.data);
+
         if (data.success) {
           toast.success(data.message);
         } else {

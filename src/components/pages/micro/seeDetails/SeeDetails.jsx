@@ -6,10 +6,13 @@ import { AuthContext } from "./../../../context/ContextProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const SeeDetails = ({ handleMicroSingleData }) => {
   const singleData = useLoaderData();
   const { userInfo } = useContext(AuthContext);
+
+  UseTitle("microbus details");
 
   // const handleMicroSingleData = (user) => {
   //   console.log(user);

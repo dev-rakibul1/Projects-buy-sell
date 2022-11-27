@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const Error = () => {
+  UseTitle("error ");
   const error = useRouteError();
   return (
     <section className="bg-white dark:bg-gray-900">
