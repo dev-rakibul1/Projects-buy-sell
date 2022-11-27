@@ -6,7 +6,7 @@ import TopBanner from "../shared/topbanner/TopBanner";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const AddProducts = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userInfo } = useContext(AuthContext);
   const productData = useLoaderData();
   console.log(productData);
 
@@ -36,7 +36,7 @@ const AddProducts = () => {
       .then((imgData) => {
         if (imgData?.success) {
           const serverImages = imgData?.data?.url;
-
+          const date = new Date();
           const newProductInfo = {
             title: data?.title,
             model: data?.model,
@@ -51,6 +51,7 @@ const AddProducts = () => {
             catagories: data?.catagories,
             images: serverImages,
             description: data?.textarea,
+            postDate: date,
           };
           console.log(newProductInfo);
 
@@ -245,6 +246,8 @@ const AddProducts = () => {
                 placeholder="seller name"
                 type="text"
                 className="input input-bordered input-secondary w-full"
+                defaultValue={userInfo?.name}
+                readOnly
               />
               {errors.sellerName?.type === "required" && (
                 <small role="alert" className="text-red-600">

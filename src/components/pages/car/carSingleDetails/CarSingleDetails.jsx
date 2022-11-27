@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "./../../../context/ContextProvider";
 
 const CarSingleDetails = () => {
   const singleData = useLoaderData();
   console.log(singleData);
+  const { userInfo } = useContext(AuthContext);
 
   // const handleCarSingleData = (data) => {
   //   console.log(data._id);
@@ -36,7 +38,8 @@ const CarSingleDetails = () => {
                 className="w-7 h-7 bg-green-700 rounded-full text-center ml-5 flex items-center justify-center text-white"
                 title="Seller verified"
               >
-                {singleData?.sellerStatus === "verified" ? (
+                {singleData?.sellerStatus === "verified" ||
+                userInfo?.sellerStatus === "verified" ? (
                   <FaCheck className="text-center" />
                 ) : (
                   <span title="Seller not verify">

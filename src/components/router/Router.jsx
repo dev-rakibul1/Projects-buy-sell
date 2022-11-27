@@ -41,14 +41,7 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
       },
-      {
-        path: "/advertise",
-        element: (
-          <PrivateRouter>
-            <AdvertisedItem />
-          </PrivateRouter>
-        ),
-      },
+
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/shop", element: <Shop /> },
@@ -165,6 +158,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyProducts />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/advertise",
+        element: (
+          <PrivateRouter>
+            <AdvertisedItem />
           </PrivateRouter>
         ),
       },

@@ -16,11 +16,11 @@ const Navbar = () => {
       <li>
         <Link to="/catagories">Catagories</Link>
       </li>
-      <li>
+      {/* <li>
         {userInfo?.role === "seller" || userInfo?.role === "admin" ? (
           <Link to="/advertise">Advertised</Link>
         ) : undefined}
-      </li>
+      </li> */}
 
       <li>
         {userInfo?.role === "seller" || userInfo?.role === "admin" ? (

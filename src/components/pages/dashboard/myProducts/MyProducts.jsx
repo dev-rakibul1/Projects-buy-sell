@@ -112,6 +112,30 @@ const MyProducts = () => {
   // handle advertisement
   const handleAdvertise = (data) => {
     console.log(data);
+    axios
+      .post("http://localhost:5000/advertise", {
+        title: data?.title,
+        images: data?.images,
+        model: data?.model,
+        originalPrice: data?.originalPrice,
+        resalePrice: data?.resalePrice,
+        postDate: data?.postDate,
+        sellerName: data?.sellerName,
+        sellerStatus: data?.sellerStatus,
+        speed: data?.speed,
+        weight: data?.weight,
+        yearsOfUse: data?.yearsOfUse,
+        location: data?.location,
+        description: data?.description,
+      })
+      .then((data) => {
+        if (data?.data?.success) {
+          toast.success(data?.data?.message);
+        } else {
+          toast.error(data?.data?.error);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -209,6 +233,7 @@ const MyProducts = () => {
                     <th>Seller name</th>
                     <th>Seller status</th>
                     <th>Location</th>
+                    <th>Advertise</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -229,6 +254,14 @@ const MyProducts = () => {
                         {ele?.sellerStatus ? ele?.sellerStatus : "Not verified"}
                       </th>
                       <td>{ele?.location}</td>
+                      <td>
+                        <button
+                          className="bg-secondary text-white py-3 px-3 rounded-md"
+                          onClick={() => handleAdvertise(ele)}
+                        >
+                          Advertise
+                        </button>
+                      </td>
                       <td>
                         <button
                           className="bg-secondary text-white py-3 px-3 rounded-md"
@@ -271,6 +304,7 @@ const MyProducts = () => {
                     <th>Seller name</th>
                     <th>Seller status</th>
                     <th>Location</th>
+                    <th>Advertise</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -291,6 +325,14 @@ const MyProducts = () => {
                         {ele?.sellerStatus ? ele?.sellerStatus : "Not verified"}
                       </th>
                       <td>{ele?.location}</td>
+                      <td>
+                        <button
+                          className="bg-secondary text-white py-3 px-3 rounded-md"
+                          onClick={() => handleAdvertise(ele)}
+                        >
+                          Advertise
+                        </button>
+                      </td>
                       <td>
                         <button
                           className="bg-secondary text-white py-3 px-3 rounded-md"

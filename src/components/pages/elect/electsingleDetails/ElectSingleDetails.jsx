@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "./../../../context/ContextProvider";
 
 const ElectSingleDetails = () => {
   const singleData = useLoaderData();
+  const { userInfo } = useContext(AuthContext);
   console.log(singleData);
   return (
     <div className="md:w-[90%] mx-auto px-2 my-16">
@@ -27,7 +29,8 @@ const ElectSingleDetails = () => {
                 className="w-7 h-7 bg-green-700 rounded-full text-center ml-5 flex items-center justify-center text-white"
                 title="Seller verified"
               >
-                {singleData?.sellerStatus === "verified" ? (
+                {singleData?.sellerStatus === "verified" ||
+                userInfo?.sellerStatus === "verified" ? (
                   <FaCheck className="text-center" />
                 ) : (
                   <span title="Seller not verify">

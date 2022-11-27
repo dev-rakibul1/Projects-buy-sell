@@ -5,8 +5,7 @@ import { AuthContext } from "./../../../context/ContextProvider";
 
 const SeeDetails = ({ handleMicroSingleData }) => {
   const singleData = useLoaderData();
-  const { allMicro } = useContext(AuthContext);
-  console.log("all micor data", allMicro);
+  const { userInfo } = useContext(AuthContext);
 
   // const handleMicroSingleData = (user) => {
   //   console.log(user);
@@ -33,7 +32,8 @@ const SeeDetails = ({ handleMicroSingleData }) => {
                 className="w-7 h-7 bg-green-700 rounded-full text-center ml-5 flex items-center justify-center text-white"
                 title="Seller verified"
               >
-                {singleData?.sellerStatus === "verified" ? (
+                {singleData?.sellerStatus === "verified" ||
+                userInfo?.sellerStatus === "verified" ? (
                   <FaCheck className="text-center" />
                 ) : (
                   <span title="Seller not verify">

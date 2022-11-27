@@ -1,10 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { FaTimes } from "react-icons/fa";
+import { AuthContext } from "./../../../context/ContextProvider";
+import UseTitle from "./../../../hook/useTitle/useTitle";
 import Spinner from "./../../../typography/spinner/Spinner";
 
 const Users = () => {
+  const { userInfo } = useContext(AuthContext);
+  UseTitle("user");
+
   const {
     data: users,
     isLoading,
@@ -38,6 +43,24 @@ const Users = () => {
       .catch((error) => console.log(error));
   };
 
+  // handle user verified
+  const handleUserVerification = (id) => {
+    console.log(id);
+
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.error);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       {users.length ? (
@@ -56,6 +79,7 @@ const Users = () => {
                   <th>Name</th>
                   <th>Gmail</th>
                   <th>Administrator role</th>
+                  <th>User status</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -73,6 +97,20 @@ const Users = () => {
                     <th>{user?.name}</th>
                     <th>{user?.email}</th>
                     <td>{user?.role}</td>
+                    <td>
+                      {user?.sellerStatus ? (
+                        user?.sellerStatus
+                      ) : (
+                        <>
+                          <button
+                            className="bg-secondary text-white py-3 px-3 rounded-md"
+                            onClick={() => handleUserVerification(user._id)}
+                          >
+                            Not verify
+                          </button>
+                        </>
+                      )}
+                    </td>
                     <td>
                       <button
                         className="bg-secondary text-white py-3 px-3 rounded-md"
