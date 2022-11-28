@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UseTitle from "../../hook/useTitle/useTitle";
 import Micro from "../micro/Micro";
@@ -57,7 +58,9 @@ const Catagories = () => {
                 </span>
                 <Link to={`/allMicro/:id`}>
                   {" "}
-                  <button className="font-semibold">See All</button>
+                  <button className="font-semibold flex items-center justify-center border border-gray-300 py-2 px-7  mt-7 md:mt-0">
+                    See All <FaArrowRight className="ml-4" />{" "}
+                  </button>
                 </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -84,7 +87,9 @@ const Catagories = () => {
                 </span>
                 <Link to={`/allElect/:id`}>
                   {" "}
-                  <button className="font-semibold">See All</button>
+                  <button className="font-semibold flex items-center justify-center border border-gray-300 py-2 px-7  mt-7 md:mt-0">
+                    See All <FaArrowRight className="ml-4" />{" "}
+                  </button>
                 </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -109,7 +114,9 @@ const Catagories = () => {
                 <span className="text-2xl font-normal">Most popular car</span>
                 <Link to={`/allCar/:id`}>
                   {" "}
-                  <button className="font-semibold">See All</button>
+                  <button className="font-semibold flex items-center justify-center border border-gray-300 py-2 px-7  mt-7 md:mt-0">
+                    See All <FaArrowRight className="ml-4" />{" "}
+                  </button>
                 </Link>
               </div>
               <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

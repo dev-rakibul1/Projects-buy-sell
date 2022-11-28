@@ -1,5 +1,6 @@
 import React from "react";
 import { FaAngleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -15,10 +16,12 @@ const Hero = () => {
             consuetudium lectorum. Mirum est notare quam littera gothica, quam
             nunc putamus parum claram.
           </p>
-          <button className="btn btn-secondary rounded-full btn-md">
-            View details
-            <FaAngleRight className="text-center ml-3 font-2xl" />
-          </button>
+          <Link to="/catagories">
+            <button className="btn btn-secondary rounded-full btn-md">
+              View details
+              <FaAngleRight className="text-center ml-3 font-2xl" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
