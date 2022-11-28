@@ -35,11 +35,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       {
         path: "/catagories",
-        element: (
-          <PrivateRouter>
-            <Catagories />
-          </PrivateRouter>
-        ),
+        element: <Catagories />,
       },
 
       { path: "/login", element: <Login /> },
@@ -49,36 +45,45 @@ const router = createBrowserRouter([
       {
         path: "/allMicro/:id",
         element: <AllMicro />,
-        loader: async () => fetch("http://localhost:5000/all-micro"),
+        loader: async () =>
+          fetch(" https://buy-sell-car-store-server.vercel.app/all-micro"),
       },
       {
         path: "/allElect/:id",
         element: <AllElect />,
-        loader: async () => fetch("http://localhost:5000/all-elect"),
+        loader: async () =>
+          fetch(" https://buy-sell-car-store-server.vercel.app/all-elect"),
       },
       {
         path: "/allCar/:id",
         element: <AllCar />,
-        loader: async () => fetch("http://localhost:5000/all-car"),
+        loader: async () =>
+          fetch(" https://buy-sell-car-store-server.vercel.app/all-car"),
       },
       {
         path: "/detailsSingleMicro/:id",
         element: <SeeDetails />,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/all-micro/${params.id}`),
+          fetch(
+            ` https://buy-sell-car-store-server.vercel.app/all-micro/${params.id}`
+          ),
       },
 
       {
         path: "/detailsSingleElect/:id",
         element: <ElectSingleDetails />,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/all-elect/${params.id}`),
+          fetch(
+            ` https://buy-sell-car-store-server.vercel.app/all-elect/${params.id}`
+          ),
       },
       {
         path: "/detailsSingleCar/:id",
         element: <CarSingleDetails />,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/all-car/${params.id}`),
+          fetch(
+            ` https://buy-sell-car-store-server.vercel.app/all-car/${params.id}`
+          ),
       },
       {
         path: "/addProducts",
@@ -95,7 +100,8 @@ const router = createBrowserRouter([
             <BookingForm />
           </PrivateRouter>
         ),
-        loader: async () => fetch("http://localhost:5000/all-micro"),
+        loader: async () =>
+          fetch(" https://buy-sell-car-store-server.vercel.app/all-micro"),
       },
     ],
   },

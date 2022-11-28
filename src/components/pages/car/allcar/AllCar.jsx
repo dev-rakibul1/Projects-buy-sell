@@ -26,7 +26,7 @@ const AllCar = () => {
       description: data?.description,
     };
 
-    fetch("http://localhost:5000/user-wishlist", {
+    fetch(" https://buy-sell-car-store-server.vercel.app/user-wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -64,7 +64,7 @@ const AllCar = () => {
       description: data?.description,
     };
 
-    fetch("http://localhost:5000/user-report", {
+    fetch(" https://buy-sell-car-store-server.vercel.app/user-report", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./../../../context/ContextProvider";
 
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ const CarSingleDetails = () => {
   // const handleCarSingleData = (data) => {
   //   console.log(data._id);
 
-  //   fetch(`http://localhost:5000/all-car/${data._id}`)
+  //   fetch(` https://buy-sell-car-store-server.vercel.app/all-car/${data._id}`)
   //     .then((res) => res.json())
   //     .then((data) => console.log(data))
   //     .catch((error) => console.log(error));
@@ -49,13 +49,16 @@ const CarSingleDetails = () => {
       location: data?.address,
     };
 
-    fetch("http://localhost:5000/user-booking-information", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userBookingInfo),
-    })
+    fetch(
+      " https://buy-sell-car-store-server.vercel.app/user-booking-information",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userBookingInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -372,9 +375,17 @@ const CarSingleDetails = () => {
               </div>
             </div>
 
-            <label htmlFor="applyActionModal" className="btn btn-secondary">
-              Booked now
-            </label>
+            {userInfo?.email ? (
+              <label htmlFor="applyActionModal" className="btn btn-secondary">
+                Booked now
+              </label>
+            ) : (
+              <Link to="/login">
+                <label htmlFor="applyActionModal" className="btn btn-secondary">
+                  Booked now
+                </label>
+              </Link>
+            )}
           </div>
         </div>
       </div>

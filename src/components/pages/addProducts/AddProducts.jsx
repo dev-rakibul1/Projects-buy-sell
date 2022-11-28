@@ -61,7 +61,7 @@ const AddProducts = () => {
           // -------------electronic car data-------------------
           if (newProductInfo.catagories === "electronicCar") {
             //   user for post method
-            fetch("http://localhost:5000/all-elect", {
+            fetch(" https://buy-sell-car-store-server.vercel.app/all-elect", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -80,7 +80,7 @@ const AddProducts = () => {
           // -------------electronic car data-------------------
           if (newProductInfo.catagories === "luxuriousCar") {
             //   user for post method
-            fetch("http://localhost:5000/all-car", {
+            fetch(" https://buy-sell-car-store-server.vercel.app/all-car", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -99,7 +99,7 @@ const AddProducts = () => {
           // -------------Microbus car data-------------------
           if (newProductInfo.catagories === "microbus") {
             //   user for post method
-            fetch("http://localhost:5000/all-micro", {
+            fetch(" https://buy-sell-car-store-server.vercel.app/all-micro", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

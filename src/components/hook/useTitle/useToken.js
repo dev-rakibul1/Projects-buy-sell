@@ -23,7 +23,10 @@ const useToken = (user) => {
 
     if (user?.email) {
       axios
-        .put(`http://localhost:5000/users/${email}`, currentUser)
+        .put(
+          ` https://buy-sell-car-store-server.vercel.app/users/${email}`,
+          currentUser
+        )
         .then((res) => {
           const accessToken = res?.data?.data;
           setToken(

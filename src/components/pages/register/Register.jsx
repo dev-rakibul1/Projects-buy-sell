@@ -74,7 +74,7 @@ const Register = () => {
               };
 
               // user for post method
-              // fetch("http://localhost:5000/users", {
+              // fetch(" https://buy-sell-car-store-server.vercel.app/users", {
               //   method: "POST",
               //   headers: {
               //     "content-type": "application/json",
@@ -83,7 +83,10 @@ const Register = () => {
               // })
 
               axios
-                .post("http://localhost:5000/users", userInfoForServer)
+                .post(
+                  " https://buy-sell-car-store-server.vercel.app/users",
+                  userInfoForServer
+                )
                 .then((res) => {
                   // console.log(res);
                   if (res?.data?.success) {
@@ -143,7 +146,7 @@ const Register = () => {
         console.log(userInfoForServer);
 
         // user for post method
-        fetch("http://localhost:5000/users", {
+        fetch(" https://buy-sell-car-store-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

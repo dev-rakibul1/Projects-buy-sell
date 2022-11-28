@@ -8,14 +8,14 @@ const Blog = () => {
   //   const { data: blogs } = useQuery({
   //     queryKey: ["blog"],
   //     queryFn: async () => {
-  //       const res = await fetch("http://localhost:5000/blog");
+  //       const res = await fetch(" https://buy-sell-car-store-server.vercel.app/blog");
   //       const data = await res.json();
   //       return data;
   //     },
   //   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/blog")
+    fetch(" https://buy-sell-car-store-server.vercel.app/blog")
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((error) => console.log(error));

@@ -7,7 +7,9 @@ const AdvertisedItem = () => {
   const { data: advertise, refetch } = useQuery({
     queryKey: ["advertise"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertise");
+      const res = await fetch(
+        " https://buy-sell-car-store-server.vercel.app/advertise"
+      );
       const data = await res.json();
       return data;
     },
@@ -16,12 +18,12 @@ const AdvertisedItem = () => {
   const handleAdvertisement = (data) => {
     console.log(data._id);
 
-    fetch(`http://localhost:5000/advertise/${data._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      ` https://buy-sell-car-store-server.vercel.app/advertise/${data._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

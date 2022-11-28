@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./../../../context/ContextProvider";
 
 import { useForm } from "react-hook-form";
@@ -42,13 +42,16 @@ const ElectSingleDetails = () => {
       location: data?.address,
     };
 
-    fetch("http://localhost:5000/user-booking-information", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userBookingInfo),
-    })
+    fetch(
+      " https://buy-sell-car-store-server.vercel.app/user-booking-information",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userBookingInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -366,9 +369,17 @@ const ElectSingleDetails = () => {
               </div>
             </div>
 
-            <label htmlFor="applyActionModal" className="btn btn-secondary">
-              Booked now
-            </label>
+            {userInfo?.email ? (
+              <label htmlFor="applyActionModal" className="btn btn-secondary">
+                Booked now
+              </label>
+            ) : (
+              <Link to="/login">
+                <label htmlFor="applyActionModal" className="btn btn-secondary">
+                  Booked now
+                </label>
+              </Link>
+            )}
           </div>
         </div>
       </div>

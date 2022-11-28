@@ -21,7 +21,7 @@ const Home = () => {
   // const { data: car, isLoading } = useQuery({
   //   queryKey: ["car"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/car-something");
+  //     const res = await fetch(" https://buy-sell-car-store-server.vercel.app/car-something");
   //     const data = await res.json();
   //     return data;
   //   },
@@ -32,21 +32,21 @@ const Home = () => {
   // }
 
   useEffect(() => {
-    fetch("http://localhost:5000/car-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/car-something")
       .then((res) => res.json())
       .then((data) => setSomeCars(data))
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/micro-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/micro-something")
       .then((res) => res.json())
       .then((data) => setMicro(data))
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/elect-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/elect-something")
       .then((res) => res.json())
       .then((data) => setElect(data))
       .catch((error) => console.log(error));

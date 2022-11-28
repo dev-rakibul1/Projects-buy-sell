@@ -14,7 +14,9 @@ const Wishlist = () => {
   } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user-wishlist");
+      const res = await fetch(
+        " https://buy-sell-car-store-server.vercel.app/user-wishlist"
+      );
       const data = res.json();
       return data;
     },
@@ -22,12 +24,12 @@ const Wishlist = () => {
 
   // handle my wishlist
   const handleMyWishlist = (wish) => {
-    fetch(`http://localhost:5000/user-wishlist/${wish._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      ` https://buy-sell-car-store-server.vercel.app/user-wishlist/${wish._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

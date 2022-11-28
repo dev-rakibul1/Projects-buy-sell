@@ -18,21 +18,21 @@ const Catagories = () => {
   const [elect, setElect] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/car-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/car-something")
       .then((res) => res.json())
       .then((data) => setSomeCars(data))
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/micro-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/micro-something")
       .then((res) => res.json())
       .then((data) => setMicro(data))
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/elect-something")
+    fetch(" https://buy-sell-car-store-server.vercel.app/elect-something")
       .then((res) => res.json())
       .then((data) => setElect(data))
       .catch((error) => console.log(error));

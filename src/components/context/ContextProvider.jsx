@@ -26,25 +26,24 @@ const ContextProvider = ({ children }) => {
   const [token] = useToken(userInfo);
 
   // axios
-  //   .get(`http://localhost:5000/users/${user?.email}`)
+  //   .get(` https://buy-sell-car-store-server.vercel.app/users/${user?.email}`)
   //   .then(function (response) {
   //     setUserInformation(response.data);
   //   });
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      .get(
+        ` https://buy-sell-car-store-server.vercel.app/users/${user?.email}`,
+        {}
+      )
       .then((res) => {
         setUserInformation(res.data);
       });
   }, [user]);
 
   // useEffect(() => {
-  //   const url = `http://localhost:5000/all-micro`;
+  //   const url = ` https://buy-sell-car-store-server.vercel.app/all-micro`;
   //   fetch(url)
   //     .then((res) => res.json())
   //     .then((data) => setALlMicro(data))

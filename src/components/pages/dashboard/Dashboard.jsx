@@ -18,7 +18,7 @@ const Dashboard = () => {
   };
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/users/${user?.email}`)
+  //   fetch(` https://buy-sell-car-store-server.vercel.app/users/${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => console.log("User information", setUserInformation(data)))
   //     .catch((error) => console.log(error));

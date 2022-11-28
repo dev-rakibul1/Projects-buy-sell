@@ -14,7 +14,9 @@ const UserReport = () => {
   } = useQuery({
     queryKey: ["myOrder"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user-report");
+      const res = await fetch(
+        " https://buy-sell-car-store-server.vercel.app/user-report"
+      );
       const data = await res.json();
       return data;
     },
@@ -25,12 +27,12 @@ const UserReport = () => {
   }
 
   const handleUserProductRemove = (order) => {
-    fetch(`http://localhost:5000/user-report/${order._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      ` https://buy-sell-car-store-server.vercel.app/user-report/${order._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

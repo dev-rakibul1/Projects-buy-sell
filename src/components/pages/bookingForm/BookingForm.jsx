@@ -30,13 +30,16 @@ const BookingForm = () => {
       address: data?.address,
     };
 
-    fetch("http://localhost:5000/user-booking-information", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userBookingInfo),
-    })
+    fetch(
+      " https://buy-sell-car-store-server.vercel.app/user-booking-information",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userBookingInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../context/ContextProvider";
 
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const SeeDetails = ({ handleMicroSingleData }) => {
@@ -13,6 +12,8 @@ const SeeDetails = ({ handleMicroSingleData }) => {
   const { userInfo } = useContext(AuthContext);
 
   UseTitle("microbus details");
+
+  const Navigate = useNavigate();
 
   // const handleMicroSingleData = (user) => {
   //   console.log(user);
@@ -46,13 +47,16 @@ const SeeDetails = ({ handleMicroSingleData }) => {
       location: data?.address,
     };
 
-    fetch("http://localhost:5000/user-booking-information", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userBookingInfo),
-    })
+    fetch(
+      " https://buy-sell-car-store-server.vercel.app/user-booking-information",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userBookingInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -369,9 +373,17 @@ const SeeDetails = ({ handleMicroSingleData }) => {
               </div>
             </div>
 
-            <label htmlFor="applyActionModal" className="btn btn-secondary">
-              Booked now
-            </label>
+            {userInfo?.email ? (
+              <label htmlFor="applyActionModal" className="btn btn-secondary">
+                Booked now
+              </label>
+            ) : (
+              <Link to="/login">
+                <label htmlFor="applyActionModal" className="btn btn-secondary">
+                  Booked now
+                </label>
+              </Link>
+            )}
           </div>
         </div>
       </div>

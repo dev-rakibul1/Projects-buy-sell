@@ -14,7 +14,9 @@ const MyProducts = () => {
   const { data: allElectronic, refetch } = useQuery({
     queryKey: ["allElectronic"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/all-elect");
+      const res = await fetch(
+        " https://buy-sell-car-store-server.vercel.app/all-elect"
+      );
       const data = res.json();
       return data;
     },
@@ -25,7 +27,7 @@ const MyProducts = () => {
   // const { data: allMicrobus } = useQuery({
   //   queryKey: ["allMicrobus"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/all-micro");
+  //     const res = await fetch(" https://buy-sell-car-store-server.vercel.app/all-micro");
   //     const data = res.json();
   //     return data;
   //   },
@@ -36,28 +38,32 @@ const MyProducts = () => {
 
   // microbus catagories products loaded
   useEffect(() => {
-    axios.get("http://localhost:5000/all-micro").then((res) => {
-      setMicroData(res.data?.slice(6));
-    });
+    axios
+      .get(" https://buy-sell-car-store-server.vercel.app/all-micro")
+      .then((res) => {
+        setMicroData(res.data?.slice(6));
+      });
   }, []);
 
   //  luxurious catagories products loaded
   useEffect(() => {
-    axios.get("http://localhost:5000/all-car").then((res) => {
-      setLuxuriousCar(res.data?.slice(6));
-    });
+    axios
+      .get(" https://buy-sell-car-store-server.vercel.app/all-car")
+      .then((res) => {
+        setLuxuriousCar(res.data?.slice(6));
+      });
   }, []);
 
   // handle electronic catagories products
   const handleAllElect = (ele) => {
     console.log(ele._id);
 
-    fetch(`http://localhost:5000/all-elect/${ele._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      ` https://buy-sell-car-store-server.vercel.app/all-elect/${ele._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -74,12 +80,12 @@ const MyProducts = () => {
   const handleAllMicro = (ele) => {
     console.log(ele._id);
 
-    fetch(`http://localhost:5000/all-micro/${ele._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      ` https://buy-sell-car-store-server.vercel.app/all-micro/${ele._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -98,11 +104,8 @@ const MyProducts = () => {
   const handleAllLuxuriousCar = (ele) => {
     console.log(ele._id);
 
-    fetch(`http://localhost:5000/all-car/${ele._id}`, {
+    fetch(` https://buy-sell-car-store-server.vercel.app/all-car/${ele._id}`, {
       method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -124,7 +127,7 @@ const MyProducts = () => {
   const handleAdvertise = (data) => {
     console.log(data);
     axios
-      .post("http://localhost:5000/advertise", {
+      .post(" https://buy-sell-car-store-server.vercel.app/advertise", {
         title: data?.title,
         images: data?.images,
         model: data?.model,

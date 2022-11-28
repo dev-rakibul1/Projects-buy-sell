@@ -19,7 +19,9 @@ const Users = () => {
   } = useQuery({
     queryKey: ["myOrder"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        " https://buy-sell-car-store-server.vercel.app/users"
+      );
       const data = await res.json();
       return data;
     },
@@ -30,11 +32,8 @@ const Users = () => {
   }
 
   const handleUser = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
+    fetch(` https://buy-sell-car-store-server.vercel.app/users/${user._id}`, {
       method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -52,11 +51,8 @@ const Users = () => {
   const handleUserVerification = (id) => {
     console.log(id);
 
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(` https://buy-sell-car-store-server.vercel.app/users/admin/${id}`, {
       method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
     })
       .then((res) => res.json())
       .then((data) => {
