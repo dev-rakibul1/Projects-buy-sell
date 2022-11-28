@@ -22,18 +22,16 @@ const DashboardLayout = () => {
     <div>
       <Navbar />
 
+      {/* ********************* */}
       <div className="drawer drawer-mobile">
-        <input
-          id="dashboard-layout"
-          type="checkbox"
-          className="drawer-toggle"
-        />
-        <div className="drawer-content  border border-gray-300 m-5">
+        <input id="myDashboard" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content border h-full m-7">
           {/* <!-- Page content here --> */}
+
           <Outlet />
         </div>
-        <div className="drawer-side  border border-gray-300 m-5">
-          <label htmlFor="dashboard-layout" className="drawer-overlay"></label>
+        <div className="drawer-side m-7 h-full border">
+          <label htmlFor="myDashboard" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             {userInfo.role === "seller" ||

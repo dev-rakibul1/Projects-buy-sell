@@ -12,7 +12,7 @@ const car2 = "https://i.ibb.co/1vrdhZ6/car4.jpg";
 const car3 = "https://i.ibb.co/mzWnxWp/car2.jpg";
 
 const Catagories = () => {
-  UseTitle("catagories");
+  UseTitle("Catagories");
   const [someCars, setSomeCars] = useState([]);
   const [micro, setMicro] = useState([]);
   const [elect, setElect] = useState([]);

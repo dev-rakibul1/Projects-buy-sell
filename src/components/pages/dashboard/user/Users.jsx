@@ -8,7 +8,7 @@ import Spinner from "./../../../typography/spinner/Spinner";
 
 const Users = () => {
   const { userInfo } = useContext(AuthContext);
-  UseTitle("user");
+  UseTitle("User");
 
   const [getUser, setGetUser] = useState("");
 

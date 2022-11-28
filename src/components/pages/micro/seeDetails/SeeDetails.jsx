@@ -11,7 +11,7 @@ const SeeDetails = ({ handleMicroSingleData }) => {
   const singleData = useLoaderData();
   const { userInfo } = useContext(AuthContext);
 
-  UseTitle("microbus details");
+  UseTitle("Microbus details");
 
   const Navigate = useNavigate();
 

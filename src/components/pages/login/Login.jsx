@@ -9,7 +9,7 @@ import TopBanner from "./../shared/topbanner/TopBanner";
 const Login = () => {
   const { user, signInWithEmailPassword, googlePopupSign } =
     useContext(AuthContext);
-  UseTitle("login");
+  UseTitle("Login");
 
   // user navigate
   const location = useLocation();

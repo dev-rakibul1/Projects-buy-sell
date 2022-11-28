@@ -6,7 +6,7 @@ import UseTitle from "./../../hook/useTitle/useTitle";
 const Dashboard = () => {
   const { userInfo, user, userLogOut } = useContext(AuthContext);
   // const [userInfo, setUserInformation] = useState([]);
-  UseTitle("dashboard");
+  UseTitle("Dashboard");
 
   const { email, role } = userInfo;
   console.log(email, role);

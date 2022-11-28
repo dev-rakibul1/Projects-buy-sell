@@ -6,7 +6,7 @@ import Spinner from "../../../typography/spinner/Spinner";
 import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const UserReport = () => {
-  UseTitle("report");
+  UseTitle("Report");
   const {
     data: myOrders,
     isLoading,

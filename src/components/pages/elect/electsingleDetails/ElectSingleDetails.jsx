@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const ElectSingleDetails = () => {
-  UseTitle("electronic car details");
+  UseTitle("Electronic car details");
   const singleData = useLoaderData();
   const { userInfo } = useContext(AuthContext);
   console.log(singleData);

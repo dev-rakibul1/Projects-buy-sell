@@ -9,7 +9,7 @@ const AllMicro = () => {
   const allmicro = useLoaderData();
   console.log(allmicro);
 
-  UseTitle("microbus");
+  UseTitle("Microbus");
 
   // handle user wish list items
   const handleUserWishlist = (data) => {

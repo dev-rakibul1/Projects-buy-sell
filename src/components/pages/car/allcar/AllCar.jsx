@@ -103,7 +103,7 @@ const AllCar = () => {
                 <img src={car.images} alt="microbus" />
               </figure>
               <div className="card-body">
-                <h2 className="card-title text-secondary font-bold">
+                <h2 className="card-title text-secondary font-normal text-4xl car-font">
                   {car.title}
                 </h2>
 

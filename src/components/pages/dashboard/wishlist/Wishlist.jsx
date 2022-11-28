@@ -5,7 +5,7 @@ import { FaMedapps, FaTimes } from "react-icons/fa";
 import UseTitle from "./../../../hook/useTitle/useTitle";
 
 const Wishlist = () => {
-  UseTitle("wishlist");
+  UseTitle("Wishlist");
   const {
     data: wishlist,
     isLoading,
