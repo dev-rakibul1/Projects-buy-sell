@@ -25,8 +25,9 @@ const DashboardLayout = () => {
       {/* ********************* */}
       <div className="drawer drawer-mobile">
         <input id="myDashboard" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content border h-full m-7">
+        <div className="drawer-content flex flex-col items-center justify-center ">
           {/* <!-- Page content here --> */}
+          {/* drawer-content border h-full m-7 */}
 
           <Outlet />
         </div>
